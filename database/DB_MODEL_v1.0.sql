@@ -1,0 +1,31 @@
+CREATE TABLE VEHICULO (
+    id_vehiculo INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    placa VARCHAR(20) NOT NULL UNIQUE,
+    tipo VARCHAR(30) NOT NULL,
+    estado VARCHAR(20) NOT NULL CHECK (estado IN ('DISPONIBLE', 'RESERVADO', 'BLOQUEADO', 'MANTENIMIENTO', 'INACTIVO')),
+    fecha_actualizacion TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE REPORTE_FALLA (
+    id_reporte INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id_vehiculo INT NOT NULL,
+    reportado_por VARCHAR(100) NOT NULL,
+    tipo_falla VARCHAR(50) NOT NULL,
+    criticidad VARCHAR(20) NOT NULL CHECK (criticidad IN ('BAJA', 'MEDIA', 'CRITICA')),
+    descripcion VARCHAR(500) NOT NULL,
+    fecha_reporte TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    estado VARCHAR(20) NOT NULL CHECK (estado IN ('PENDIENTE', 'EN_REVISION', 'CERRADO')),
+    CONSTRAINT fk_reporte_vehiculo FOREIGN KEY (id_vehiculo) REFERENCES VEHICULO(id_vehiculo)
+);
+
+CREATE TABLE REVISION_MANTENIMIENTO (
+    id_revision INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id_reporte INT NOT NULL,
+    id_vehiculo INT NOT NULL,
+    resultado VARCHAR(20) NOT NULL CHECK (resultado IN ('SEGURO', 'NO_SEGURO')),
+    observaciones VARCHAR(500),
+    fecha_revision TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    personal_responsable VARCHAR(100) NOT NULL,
+    CONSTRAINT fk_rev_reporte FOREIGN KEY (id_reporte) REFERENCES REPORTE_FALLA(id_reporte),
+    CONSTRAINT fk_rev_vehiculo FOREIGN KEY (id_vehiculo) REFERENCES VEHICULO(id_vehiculo)
+);
