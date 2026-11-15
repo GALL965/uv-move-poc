@@ -1,0 +1,58 @@
+cat << 'EOF' > ~/uv-move-poc/client/src/App.css
+* { box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+body { margin: 0; background-color: #f4f6f5; color: #1f2937; }
+
+.login-wrapper { display: flex; min-height: 100vh; }
+.login-banner {
+  flex: 1; background-color: #113825; color: white; padding: 3rem;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.login-banner h1 { font-size: 2.8rem; line-height: 1.1; margin: 0; }
+.login-banner p { color: #a7c4b5; max-width: 360px; font-size: 1.05rem; }
+.login-form-box {
+  flex: 1; background: white; display: flex; align-items: center; justify-content: center; padding: 2rem;
+}
+.login-card { width: 100%; max-width: 380px; }
+.login-card h2 { margin-bottom: 0.25rem; color: #113825; }
+.login-card label { display: block; font-size: 0.85rem; font-weight: 600; margin-top: 1rem; margin-bottom: 0.35rem; }
+.login-card input {
+  width: 100%; padding: 0.7rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.95rem;
+}
+
+.btn-primary {
+  width: 100%; margin-top: 1.25rem; padding: 0.75rem; background-color: #16794c;
+  color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.95rem;
+}
+.btn-primary:hover { background-color: #115e3b; }
+.btn-secondary {
+  width: 100%; margin-top: 0.5rem; padding: 0.65rem; background-color: #e5e7eb;
+  color: #374151; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;
+}
+
+.dashboard { display: flex; min-height: 100vh; }
+.sidebar {
+  width: 240px; background: white; border-right: 1px solid #e5e7eb; padding: 1.5rem;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.brand { font-size: 1.4rem; font-weight: 800; color: #16794c; margin-bottom: 2rem; }
+.nav-item { padding: 0.65rem 0.85rem; border-radius: 6px; font-weight: 600; color: #16794c; background: #ecfdf5; }
+.main-content { flex: 1; padding: 2rem 2.5rem; max-width: 1050px; }
+
+.alert { padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; font-weight: 500; border-left: 5px solid; }
+.alert-success { background: #ecfdf5; color: #065f46; border-color: #10b981; }
+.alert-error { background: #fef2f2; color: #991b1b; border-color: #ef4444; }
+
+.vehiculo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.vehiculo-card {
+  background: white; border: 1px solid #e5e7eb; border-radius: 10px; padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.badge { display: inline-block; padding: 0.25rem 0.6rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; }
+.badge-DISPONIBLE { background: #d1fae5; color: #065f46; }
+.badge-RESERVADO { background: #fef3c7; color: #92400e; }
+.badge-BLOQUEADO { background: #fee2e2; color: #991b1b; }
+
+table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; margin-top: 1rem; }
+th, td { text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb; font-size: 0.9rem; }
+th { background: #f9fafb; color: #4b5563; }
+EOF
